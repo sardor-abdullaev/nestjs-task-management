@@ -9,3 +9,17 @@ Content-Type: application/json
   "title" : "Clean my room",
   "description" : "Lots of cleaning has to be done"
 }
+
+### Get a task
+GET http://localhost:3000/tasks/a8bdadc5-0525-4d7e-a9c2-443eec013f76
+
+### Delete a task
+DELETE http://localhost:3000/tasks/76c21082-c595-4798-a2db-8275c0ce2971
+
+### Update a task status
+PATCH http://localhost:3000/tasks/a3a6a725-8405-44d2-b354-68ea275e057b/status
+Content-Type: application/json
+
+{
+  "status" : "CLOSE"
+}
