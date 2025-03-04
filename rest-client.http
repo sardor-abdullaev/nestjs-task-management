@@ -26,3 +26,13 @@ Content-Type: application/json
 {
   "status" : "CLOSE"
 }
+
+################################################
+### Sign up
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username" : "sardor",
+  "password" : "secret"
+}
