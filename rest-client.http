@@ -34,5 +34,5 @@ Content-Type: application/json
 
 {
   "username" : "sardor",
-  "password" : "secret"
+  "password" : "Secret@1"
 }
