@@ -46,8 +46,9 @@ export class TasksService {
     return task;
   }
 
-  async getTaskById(id: string): Promise<Task> {
-    const found = await this.tasksRepository.findOneBy({ id });
+  async getTaskById(id: string, user: User): Promise<Task> {
+    // const found = await this.tasksRepository.findOneBy({ id });
+    const found = await this.tasksRepository.findOne({ where: { id,user } });
     // console.log(found);
 
     if (!found) {
@@ -63,11 +64,11 @@ export class TasksService {
     }
   }
 
-  async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
-    const task = await this.getTaskById(id);
+  // async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
+  //   const task = await this.getTaskById(id);
 
-    task.status = status;
-    await this.tasksRepository.save(task);
-    return task;
-  }
+  //   task.status = status;
+  //   await this.tasksRepository.save(task);
+  //   return task;
+  // }
 }
