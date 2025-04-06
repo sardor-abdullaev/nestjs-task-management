@@ -1,21 +1,22 @@
 import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Task } from './tasks/task.entity';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TasksModule, TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'aws-0-ap-south-1.pooler.supabase.com',
-    port: 5432,
-    username: 'postgres.tamuyrmnrohhupltfuuu',
-    password: 'RealMadridN1',
-    database: 'task-management',
-    autoLoadEntities: true,
-    synchronize: true,
-    // entities: [Task]
-  }), AuthModule],
+  imports: [
+    ConfigModule.forRoot({ envFilePath: [`.env.stage.${process.env.STAGE}`] }), TasksModule, TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'aws-0-ap-south-1.pooler.supabase.com',
+      port: 5432,
+      username: 'postgres.tamuyrmnrohhupltfuuu',
+      password: 'RealMadridN1',
+      database: 'task-management',
+      autoLoadEntities: true,
+      synchronize: true,
+      // entities: [Task]
+    }), AuthModule],
 })
 export class AppModule { }
 
